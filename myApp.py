@@ -51,14 +51,32 @@ class myApp(object):
         information = Label(self.mainWindow, text=key_list[i])
         information.grid(row=i+3, column=0, sticky=W)
 
-    def show_results(self):
-        results = Operations.compute_result(int(self.value_in_pln.get()))
+    def round_entry_value(self):
+        val = str(round(float(self.value_in_pln.get()),2))
+        self.value_in_pln.delete(0,END)
+        self.value_in_pln.insert(0,val)
+
+    def outputs_ui(self, results):
         result_info = Label(self.mainWindow, text="Kwota w obcych walutach:")
         result_info.grid(row=2, column=0, sticky=W)
         key_list = list(currencies.keys())
         for i in range(len(results)):
             self.generate_output_label(i, key_list)
             self.generate_output_box(i).insert(0,str(round(results[i],2)))
+
+    def catch_input_errors(self):
+        if not self.value_in_pln.get().isnumeric() or float(self.value_in_pln.get()) <= 0:
+            messagebox.showwarning("Warning", "Ta wartość nie ma sensu")
+            return True
+        if not self.value_in_pln.get():
+            messagebox.showinfo("Info", "Musisz wprowadzić jakąś wartość")
+            return True
+
+    def show_results(self):
+        if(not self.catch_input_errors()):
+            self.round_entry_value()
+            results = Operations.compute_result(float(self.value_in_pln.get()))
+            self.outputs_ui(results)
 
 
 app = myApp()
