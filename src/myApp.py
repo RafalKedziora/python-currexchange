@@ -25,7 +25,7 @@ class myApp(object):
         self.mainWindow = Tk()
         self.mainWindow.geometry("250x260")
         self.mainWindow.title("KANTOR WALUT")
-        filename = PhotoImage(file = "background.png")
+        filename = PhotoImage(file = "../images/background.png")
         background_label = Label(self.mainWindow, image = filename)
         background_label.place(x=0, y=0, relwidth=1, relheight=1)
         self.init_ui()
