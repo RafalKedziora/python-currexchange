@@ -1,12 +1,8 @@
 import json
 
 def read_currency_data():
-    f = open('currentExchangeRate.json', 'r')
+    f = open('./json_files/currentExchangeRate.json', 'r')
     data = json.load(f)
-    
-    for i in data["conversion_rates"]:
-        print(i)
-    
     f.close()
 
-    return data
+    return data["conversion_rates"]
