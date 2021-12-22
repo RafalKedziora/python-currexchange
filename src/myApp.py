@@ -21,9 +21,12 @@ class myApp(object):
     def init_random_currencies(self):
         self.currencies = exchangeRateLocalUpdater()
         tempdict = {}
-        for i in range(8):    
+        i = 0
+        while i<8:    
             temp = choice(list(self.currencies.keys()))
-            tempdict[temp] = self.currencies[temp]
+            if(temp not in tempdict): 
+                tempdict[temp] = self.currencies[temp]
+                i+=1
         self.currencies = tempdict
 
     def round_entry_value(self):
@@ -70,6 +73,7 @@ class myApp(object):
             return True
 
     def show_results(self):
+        self.init_random_currencies()
         if(not self.catch_input_errors()):
             self.round_entry_value()
             results = Operations.compute_result(float(self.value_in_pln.get()), self.currencies)
