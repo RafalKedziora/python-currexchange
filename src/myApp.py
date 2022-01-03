@@ -3,6 +3,7 @@ from tkinter import messagebox
 from random import choice
 from helpers.exchangeRateUpdater import exchangeRateLocalUpdater, exchangeRateUpdater
 from helpers.exchange_value import Operations
+from helpers.fileReader import check_file_exist
 
 class myApp(object):
     currencies = {}
@@ -19,6 +20,8 @@ class myApp(object):
         self.mainWindow.mainloop()
     
     def init_random_currencies(self):
+        if(not check_file_exist()):
+            exchangeRateUpdater()
         self.currencies = exchangeRateLocalUpdater()
         tempdict = {}
         i = 0
