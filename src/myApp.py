@@ -3,7 +3,7 @@ from tkinter import messagebox
 from random import choice
 from helpers.exchangeRateUpdater import exchangeRateLocalUpdater, exchangeRateUpdater
 from helpers.exchange_value import Operations
-from helpers.fileReader import check_file_exist
+from data.fileReader import check_file_exist
 
 class myApp(object):
     currencies = {}
