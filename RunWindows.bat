@@ -1,3 +1,3 @@
 pip3 install requests;
-cd src;
+cd .\src\;
 python myApp.py
