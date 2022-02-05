@@ -2,7 +2,7 @@ from tkinter import messagebox
 import requests
 
 def use_currency_api():
-    url = 'https://v6.exchangerate-api.com/v6/815ad457ddcb690f55479f06/latest/PLN'
+    url = 'TUTAJ WPISZ SWOJE API OD https://www.exchangerate-api.com/'
     try:
         response = requests.get(url)
         data = response.json()
